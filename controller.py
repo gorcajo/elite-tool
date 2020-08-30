@@ -18,14 +18,14 @@ logging.basicConfig(
 
 @app.route("/", methods=["GET"])
 def get_root():
-    return redirect("/new-repairment", code=302)
+    return redirect("/pages/new-repairment", code=302)
 
 
-@app.route("/<section>", methods=["GET"])
-def get_section(section: str):
+@app.route("/pages/<page>", methods=["GET"])
+def get_page(page: str):
     try:
         try:
-            return app.send_static_file(f"{section}.html"), 200
+            return app.send_static_file(f"{page}.html"), 200
         except NotFound:
             return app.send_static_file(f"404.html"), 404
     except:
@@ -33,7 +33,7 @@ def get_section(section: str):
         return app.send_static_file(f"500.html"), 500
 
 
-@app.route("/<folder>/<resource>", methods=["GET"])
+@app.route("/pages/<folder>/<resource>", methods=["GET"])
 def get_static_resource(folder: str, resource: str):
     try:
         try:
