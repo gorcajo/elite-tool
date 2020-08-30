@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>EliteTool</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <link rel="stylesheet" href="lib/bootstrap.4.5.2-sandstone.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="#">EliteTool</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Nueva reparación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Editar reparación</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="spacing-bottom display-4">Nueva reparación</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="spacing-bottom">Datos del cliente</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="customer-name">Nombre</label>
+                    <input id="customer-name" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="customer-phone">Teléfono móvil</label>
+                    <input id="customer-phone" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="spacing-top spacing-bottom">Datos del equipo</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="type">Equipo</label>
+                    <input id="type" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="manufacturer">Fabricante</label>
+                    <input id="manufacturer" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input id="model" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="reception-date">Fecha de recepción</label>
+                    <input id="reception-date" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="estimated-cost">Costo aproximado de reparación</label>
+                    <input id="estimated-cost" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="description">Problema del equipo</label>
+                    <textarea id="description" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button id="create-repairment" type="button"
+                    class="btn btn-primary btn-block btn-lg spacing-top">Crear</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery.3.5.1.min.js"></script>
+    <script src="lib/bootstrap.4.5.2.min.js"></script>
+</body>
+
+</html>

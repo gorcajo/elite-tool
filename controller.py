@@ -18,7 +18,7 @@ logging.basicConfig(
 
 @app.route("/", methods=["GET"])
 def get_root():
-    return redirect("/home", code=302)
+    return redirect("/new-repairment", code=302)
 
 
 @app.route("/<section>", methods=["GET"])
