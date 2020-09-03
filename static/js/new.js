@@ -1,6 +1,6 @@
 function main() {
     document.getElementById("btn-save").onclick = function () {
-        request = new XMLHttpRequest();
+        let request = new XMLHttpRequest();
 
         request.open("POST", "/api/repairments");
         request.setRequestHeader("Content-Type", "application/json");
