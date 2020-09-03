@@ -1,5 +1,9 @@
 # elite-tool
 
+## WTF is this
+
+A simple, dirty and quick tool for a friend's repairment shop.
+
 ## Usage
 
 Run the server with:
