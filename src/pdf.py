@@ -29,7 +29,6 @@ class RepairmentPdf(FPDF):
 
         self.ln(5)
 
-
     def _add_section_footer(self):
         self.ln(10)
         self._add_small_cell(key="Domicilio:", value="C/ Peñuelas 25, 28005")
