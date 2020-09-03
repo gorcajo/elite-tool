@@ -55,12 +55,16 @@ function updateTable() {
             let newDeleteButton = deleteButton.cloneNode(true);
             newDeleteButton.removeAttribute('id');
             newDeleteButton.addEventListener("click", function() {
-                let request = new XMLHttpRequest();
-                request.open("DELETE", "/api/repairments/" + repairments[i].id);
-                request.onload = function () {
-                    location.reload();
+                let response = confirm("Vas a borrar un registro, ¿estás seguro?");
+
+                if (response === true) {
+                    let request = new XMLHttpRequest();
+                    request.open("DELETE", "/api/repairments/" + repairments[i].id);
+                    request.onload = function () {
+                        location.reload();
+                    }
+                    request.send();
                 }
-                request.send();
             });
             buttonsCell.appendChild(newDeleteButton);
         }
