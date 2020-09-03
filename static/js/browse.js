@@ -55,7 +55,7 @@ function updateTable() {
             let newDeleteButton = deleteButton.cloneNode(true);
             newDeleteButton.removeAttribute('id');
             newDeleteButton.addEventListener("click", function() {
-                let response = confirm("Vas a borrar un registro, ¿estás seguro?");
+                let response = confirm("Vas a borrar la reparación, ¿estás seguro?");
 
                 if (response === true) {
                     let request = new XMLHttpRequest();
