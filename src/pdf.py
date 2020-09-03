@@ -9,24 +9,33 @@ from fpdf import FPDF
 class RepairmentPdf(FPDF):
 
     def _add_section_header(self, section_name: str):
-        title_cell_height = 25
+        title_cell_height = 20
+        image_width = 26
 
         self.set_fill_color(180, 180, 180)
-
         self.set_font(family="Arial", style="I", size=15)
-        self.cell(w=40, h=title_cell_height, txt=f"[LOGO]", ln=0, align="C", border=True)
+
+        y = self.get_y()
+        self.image(name="src/static/images/logo.jpg", x=None, y=None, w=image_width, h=title_cell_height)
+        self.set_y(y)
+        self.cell(w=image_width, h=title_cell_height, txt="", ln=0)
 
         self.set_font(family="Arial", style="B", size=20)
-        self.cell(w=110, h=title_cell_height, txt=f"  {section_name}", ln=0, fill=True)
+        self.cell(w=10, h=title_cell_height, txt="", ln=0, fill=True)
+        self.cell(w=100, h=title_cell_height, txt=f"{section_name}", ln=0, fill=True)
 
         self.set_font(family="Arial", style="I", size=15)
         self.cell(w=0, h=title_cell_height, txt=f"#{self.repairment['id']} ", ln=1, align="R", fill=True)
+
+        self.ln(5)
 
 
     def _add_section_subheader(self):
         cell_height = 4
 
-        self.cell(w=50, h=cell_height, txt="", ln=0)
+        self.ln(10)
+
+        self.cell(w=30, h=cell_height, txt="", ln=0)
 
         self.set_font(family="Arial", style="BI", size=8)
         self.cell(w=16, h=cell_height, txt=f"Domicilio:", ln=0)
@@ -43,7 +52,7 @@ class RepairmentPdf(FPDF):
         self.set_font(family="Arial", style="I", size=8)
         self.cell(w=35, h=cell_height, txt=f"info@elitemacpc.com", ln=1)
 
-        self.cell(w=70, h=cell_height, txt="", ln=0)
+        self.cell(w=50, h=cell_height, txt="", ln=0)
 
         self.set_font(family="Arial", style="BI", size=8)
         self.cell(w=18, h=cell_height, txt=f"HORARIO:", ln=0)
@@ -131,12 +140,12 @@ class RepairmentPdf(FPDF):
         self.add_page()
 
         self._add_section_header("PRESUPUESTO")
-        self._add_section_subheader()
         self._add_section_body()
+        self._add_section_subheader()
 
         while self.get_y() < (self.h / 2):
             self.ln(1)
 
         self._add_section_header("COPIA DE RESGUARDO")
-        self._add_section_subheader()
         self._add_section_body()
+        self._add_section_subheader()
