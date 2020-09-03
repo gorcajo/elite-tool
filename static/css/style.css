@@ -10,6 +10,10 @@ nav {
     margin-bottom: 0.5em;
 }
 
+.spacing-right {
+    margin-right: 0.5em;
+}
+
 .hidden {
     display: none;
 }
