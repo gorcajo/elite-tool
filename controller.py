@@ -82,6 +82,22 @@ def delete_repairment(service: RepairmentsService, id: int):
         return "", 500
 
 
+# ---------------- files ----------------
+
+@app.route("/files/repairment-<id>.pdf", methods=["GET"])
+def get_repairment_pdf(service: RepairmentsService, id: int):
+    try:
+        result = service.get_repairment_pdf(id)
+
+        if result is not None:
+            return json.dumps(result), 200
+        else:
+            return redirect("/pages/404", code=302)
+    except:
+        logging.exception("Returning HTTP 500:")
+        return "", 500
+
+
 # ---------------- front-end ----------------
 
 @app.route("/", methods=["GET"])

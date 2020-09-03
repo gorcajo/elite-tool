@@ -41,7 +41,7 @@ function updateTable() {
             let newViewButton = viewButton.cloneNode(true);
             newViewButton.removeAttribute('id');
             newViewButton.addEventListener("click", function() {
-                alert("Not Implemented");
+                window.location = "/files/repairment-" +  repairments[i].id + ".pdf"
             });
             buttonsCell.appendChild(newViewButton);
 

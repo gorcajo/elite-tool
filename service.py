@@ -14,7 +14,6 @@ class RepairmentsService():
 
     def create_new_repairment(self, repairment: dict) -> dict:
         id = self.db.insert(repairment)
-        print(id)
         repairment["id"] = id
         return repairment
 
@@ -39,12 +38,17 @@ class RepairmentsService():
 
 
     def get_repairment(self, id: int) -> dict:
+        return self.db.find_by_id(id)
+
+
+    def get_repairment_pdf(self, id: int) -> dict:
         repairment = self.db.find_by_id(id)
 
-        if repairment is not None:
-            return repairment
-        else:
+        if repairment is None:
             return None
+        
+        # TODO
+        return f"PDF for repairment #{repairment['id']}: NOT IMPLEMENTED"
 
 
     def modify_repairment(self, id: int, repairment: dict):

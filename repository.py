@@ -81,7 +81,6 @@ class SqliteDataBase(DataBase):
             conn.row_factory = sqlite3.Row
 
             qry = "SELECT * FROM repairments WHERE id = ?"
-            print(id)
             rows = conn.cursor().execute(qry, [id]).fetchall()
 
             if len(rows) == 0:
