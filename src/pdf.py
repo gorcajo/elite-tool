@@ -9,48 +9,33 @@ from fpdf import FPDF
 class RepairmentPdf(FPDF):
 
     def _add_section_header(self, section_name: str):
-        title_cell_height = 25
+        title_cell_height = 20
+        image_width = 26
 
         self.set_fill_color(180, 180, 180)
-
         self.set_font(family="Arial", style="I", size=15)
-        self.cell(w=40, h=title_cell_height, txt=f"[LOGO]", ln=0, align="C", border=True)
+
+        y = self.get_y()
+        self.image(name="src/static/images/logo.jpg", x=None, y=None, w=image_width, h=title_cell_height)
+        self.set_y(y)
+        self.cell(w=image_width, h=title_cell_height, txt="", ln=0)
 
         self.set_font(family="Arial", style="B", size=20)
-        self.cell(w=110, h=title_cell_height, txt=f"  {section_name}", ln=0, fill=True)
+        self.cell(w=10, h=title_cell_height, txt="", ln=0, fill=True)
+        self.cell(w=100, h=title_cell_height, txt=f"{section_name}", ln=0, fill=True)
 
         self.set_font(family="Arial", style="I", size=15)
         self.cell(w=0, h=title_cell_height, txt=f"#{self.repairment['id']} ", ln=1, align="R", fill=True)
 
-
-    def _add_section_subheader(self):
-        cell_height = 4
-
-        self.cell(w=50, h=cell_height, txt="", ln=0)
-
-        self.set_font(family="Arial", style="BI", size=8)
-        self.cell(w=16, h=cell_height, txt=f"Domicilio:", ln=0)
-        self.set_font(family="Arial", style="I", size=8)
-        self.cell(w=35, h=cell_height, txt=f"C/ Peñuelas 25, 28005", ln=0)
-
-        self.set_font(family="Arial", style="BI", size=8)
-        self.cell(w=8, h=cell_height, txt=f"Tel.:", ln=0)
-        self.set_font(family="Arial", style="I", size=8)
-        self.cell(w=35, h=cell_height, txt=f"912328853, 661192909", ln=0)
-
-        self.set_font(family="Arial", style="BI", size=8)
-        self.cell(w=9, h=cell_height, txt=f"Mail:", ln=0)
-        self.set_font(family="Arial", style="I", size=8)
-        self.cell(w=35, h=cell_height, txt=f"info@elitemacpc.com", ln=1)
-
-        self.cell(w=70, h=cell_height, txt="", ln=0)
-
-        self.set_font(family="Arial", style="BI", size=8)
-        self.cell(w=18, h=cell_height, txt=f"HORARIO:", ln=0)
-        self.set_font(family="Arial", style="I", size=8)
-        self.cell(w=0, h=cell_height, txt=f"Lun-Vie: 10:00-14:00 y 17:00-21:00, Sáb: 10:00-14:00", ln=1)
-
         self.ln(5)
+
+
+    def _add_section_footer(self):
+        self.ln(10)
+        self._add_small_cell(key="Domicilio:", value="C/ Peñuelas 25, 28005")
+        self._add_small_cell(key="Tel.:", value="912328853, 661192909")
+        self._add_small_cell(key="Mail:", value="info@elitemacpc.com", newline=True)
+        self._add_small_cell(key="HORARIO:", value="Lun-Vie: 10:00-14:00 y 17:00-21:00 - Sáb: 10:00-14:00", newline=True)
 
 
     def _add_section_body(self):
@@ -112,6 +97,19 @@ class RepairmentPdf(FPDF):
             self.ln(cell_height)
 
 
+    def _add_small_cell(self, key: str, value: str, newline=False):
+        font_size = 8
+        cell_height = 4
+
+        self.set_font(family="Arial", style="BI", size=font_size)
+        self.cell(w=16, h=cell_height, txt=key, align="R", ln=0)
+        self.set_font(family="Arial", style="I", size=font_size)
+        self.cell(w=25, h=cell_height, txt=value, ln=0)
+
+        if newline:
+            self.ln(cell_height)
+
+
     def _add_multicell(self, key: str, value: str):
         cell_width = 45
         cell_height = 6
@@ -131,12 +129,12 @@ class RepairmentPdf(FPDF):
         self.add_page()
 
         self._add_section_header("PRESUPUESTO")
-        self._add_section_subheader()
         self._add_section_body()
+        self._add_section_footer()
 
         while self.get_y() < (self.h / 2):
             self.ln(1)
 
         self._add_section_header("COPIA DE RESGUARDO")
-        self._add_section_subheader()
         self._add_section_body()
+        self._add_section_footer()
