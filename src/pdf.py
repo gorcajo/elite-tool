@@ -58,7 +58,7 @@ class RepairmentPdf(FPDF):
         self._add_highlighted_row(key="Teléfono móvil", value=self.repairment["customer_phone"])
         self._add_highlighted_row(key="Equipo", value=self.repairment["type"])
 
-        self.ln(5)
+        self._add_cell("", "", newline=True)
 
         self._add_cell("Fabricante:", self.repairment["manufacturer"])
         self._add_cell("Fecha de recepción:", self.repairment["reception_date"], newline=True)
@@ -77,7 +77,7 @@ class RepairmentPdf(FPDF):
 
         self._add_cell("Contraseña:", "TO DO", newline=True)
 
-        self.ln(5)
+        self._add_cell("", "", newline=True)
 
         self._add_multicell("Problema del equipo:", self.repairment["description"])
 
