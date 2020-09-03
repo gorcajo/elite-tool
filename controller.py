@@ -23,6 +23,8 @@ logging.basicConfig(
 app = Flask(__name__)
 
 
+# ---------------- back-end ----------------
+
 @inject
 @app.route("/api/repairments", methods=["POST"])
 def post_repairment(service: RepairmentsService):
@@ -81,9 +83,16 @@ def delete_repairment(service: RepairmentsService, id: int):
         return "", 500
 
 
+# ---------------- front-end ----------------
+
 @app.route("/", methods=["GET"])
 def get_root():
-    return redirect("/pages/new-repairment", code=302)
+    return redirect("/pages/browse", code=302)
+
+
+@app.route("/pages", methods=["GET"])
+def get_pages():
+    return redirect("/pages/browse", code=302)
 
 
 @app.route("/pages/<page>", methods=["GET"])

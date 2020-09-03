@@ -19,126 +19,67 @@
         <a class="navbar-brand" href="#">EliteTool</a>
         <ul class="navbar-nav">
             <li class="nav-item">
+                <a class="nav-link" href="/pages/browse">Explorar</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/pages/new">Nueva reparación</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/pages/search">Búsqueda</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pages/browse">Explorar</a>
-            </li>
         </ul>
     </nav>
 
     <div class="container">
-        <div id="section-search-fields">
-            <div class="row">
-                <div class="col text-center">
-                    <h1 class="spacing-bottom display-4">Búsqueda</h1>
-                </div>
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="spacing-bottom display-4">Búsqueda</h1>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input id="txt-id" type="text" class="form-control" placeholder="ID">
-                        <div class="input-group-append">
-                            <button id="btn-search-id" class="btn btn-primary" type="submit">Buscar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input id="txt-sn" type="text" class="form-control" placeholder="Número de Serie">
-                        <div class="input-group-append">
-                            <button id="btn-search-sn" class="btn btn-primary" type="submit">Buscar</button>
-                        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input id="txt-id" type="text" class="form-control" placeholder="ID">
+                    <div class="input-group-append">
+                        <button id="btn-search-id" class="btn btn-primary" type="submit">Buscar</button>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input id="txt-customer-phone" type="text" class="form-control"
-                            placeholder="Teléfono móvil del propietario">
-                        <div class="input-group-append">
-                            <button id="btn-search-customer-phone" class="btn btn-primary" type="submit">Buscar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input id="txt-customer-name" type="text" class="form-control"
-                            placeholder="Nombre del propietario">
-                        <div class="input-group-append">
-                            <butto id="btn-search-customer-name" n class="btn btn-primary" type="submit">Buscar</button>
-                        </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input id="txt-sn" type="text" class="form-control" placeholder="Número de Serie">
+                    <div class="input-group-append">
+                        <button id="btn-search-sn" class="btn btn-primary" type="submit">Buscar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="section-results" class="hidden">
-            <div class="row">
-                <div class="col text-center">
-                    <h1 class="spacing-bottom display-4">Resultados</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input id="txt-customer-phone" type="text" class="form-control"
+                        placeholder="Teléfono móvil del propietario">
+                    <div class="input-group-append">
+                        <button id="btn-search-customer-phone" class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>N/S</th>
-                                <th>Móvil</th>
-                                <th>Nombre</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>123123123</td>
-                                <td>612345678</td>
-                                <td>Lenin Grado</td>
-                                <td>
-                                    <button id="btn-view-1" type="button" class="btn btn-primary">Ver</button>
-                                    <button id="btn-edit-1" type="button" class="btn btn-warning">Editar</button>
-                                    <button id="btn-delete-1" type="button" class="btn btn-danger">Borrar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>123123123</td>
-                                <td>666666666</td>
-                                <td>Satan</td>
-                                <td>
-                                    <button id="btn-view-2" type="button" class="btn btn-primary">Ver</button>
-                                    <button id="btn-edit-2" type="button" class="btn btn-warning">Editar</button>
-                                    <button id="btn-delete-2" type="button" class="btn btn-danger">Borrar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>123123123</td>
-                                <td>696969696</td>
-                                <td>María Unpajote</td>
-                                <td>
-                                    <button id="btn-view-3" type="button" class="btn btn-primary">Ver</button>
-                                    <button id="btn-edit-3" type="button" class="btn btn-warning">Editar</button>
-                                    <button id="btn-delete-3" type="button" class="btn btn-danger">Borrar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input id="txt-customer-name" type="text" class="form-control"
+                        placeholder="Nombre del propietario">
+                    <div class="input-group-append">
+                        <butto id="btn-search-customer-name" n class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
     </div>
 
     <script src="lib/jquery.3.5.1.min.js"></script>
