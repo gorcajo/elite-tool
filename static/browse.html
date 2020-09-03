@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>EliteTool</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <link rel="stylesheet" href="lib/bootstrap.4.5.2-sandstone.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="#">EliteTool</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/pages/new">Nueva reparación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pages/search">Búsqueda</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/pages/browse">Explorar</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="spacing-bottom display-4">Explorar</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table id="tbl-repairments" class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>N/S</th>
+                            <th>Móvil</th>
+                            <th>Nombre</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="div-buttons" class="hidden">
+        <button id="btn-view-3" type="button" class="btn btn-primary">Ver</button>
+        <button id="btn-edit-3" type="button" class="btn btn-warning">Editar</button>
+        <button id="btn-delete-3" type="button" class="btn btn-danger">Borrar</button>
+    </div>
+
+    <script src="lib/jquery.3.5.1.min.js"></script>
+    <script src="lib/bootstrap.4.5.2.min.js"></script>
+
+    <script src="js/browse.js"></script>
+</body>
+
+</html>
