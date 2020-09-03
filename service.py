@@ -26,7 +26,7 @@ class RepairmentsService():
                 value = filters[key]
 
                 for repairment in all_repairments:
-                    if repairment[key].strip().lower() == value.strip().lower():
+                    if str(repairment[key]).strip().lower() == value.strip().lower():
                         repairments.append(repairment)
 
             return repairments
