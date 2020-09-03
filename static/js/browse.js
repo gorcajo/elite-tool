@@ -48,7 +48,7 @@ function updateTable() {
             let newEditButton = editButton.cloneNode(true);
             newEditButton.removeAttribute('id');
             newEditButton.addEventListener("click", function() {
-                alert("Not Implemented");
+                window.location = "/pages/edit#id=" + repairments[i].id;
             });
             buttonsCell.appendChild(newEditButton);
 

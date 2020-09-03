@@ -1,15 +1,42 @@
 function main() {
-    document.getElementById("btn-save").onclick = function () {
+    let id = getHashParameter("id");
+
+    let request = new XMLHttpRequest();
+
+    request.open("GET", "/api/repairments/" + id);
+
+    request.onload = function () {
+        if (request.status !== 200) {
+            throw "HTTP " + request.status + ": " + request.statusText;
+        }
+
+        repairment = JSON.parse(request.responseText);
+
+        document.getElementById("txt-id").value = repairment.id;
+        document.getElementById("txt-customer-name").value = repairment.customer_name;
+        document.getElementById("txt-customer-phone").value = repairment.customer_phone;
+        document.getElementById("txt-type").value = repairment.type;
+        document.getElementById("txt-manufacturer").value = repairment.manufacturer;
+        document.getElementById("txt-model").value = repairment.model;
+        document.getElementById("txt-sn").value = repairment.serial_number;
+        document.getElementById("txt-reception-date").value = repairment.reception_date;
+        document.getElementById("txt-estimated-cost").value = repairment.estimated_cost;
+        document.getElementById("txt-description").value = repairment.description;
+    };
+
+    request.send();
+
+    document.getElementById("btn-save").onclick = function() {
         let request = new XMLHttpRequest();
 
-        request.open("POST", "/api/repairments");
+        request.open("PUT", "/api/repairments/" + id);
         request.setRequestHeader("Content-Type", "application/json");
 
         request.onload = function () {
-            if (request.status !== 201) {
+            if (request.status !== 204) {
                 throw "HTTP " + request.status + ": " + request.statusText;
             }
-        
+
             alert("OK");
         };
 
@@ -44,7 +71,25 @@ function main() {
                 "description": document.getElementById("txt-description").value,
             }));
         }
+    };
+}
+
+function getHashParameter(parameter) {
+    let pairs = getHashString().split("&");
+
+    for (let i = 0; i < pairs.length; i++) {
+        let pair = pairs[i];
+        let key = pair.split("=")[0];
+        let value = pair.split("=")[1];
+
+        if (key === parameter) {
+            return value;
+        }
     }
+}
+
+function getHashString() {
+    return window.location.hash.substr(1);
 }
 
 main();
