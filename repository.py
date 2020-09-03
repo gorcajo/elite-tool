@@ -107,11 +107,12 @@ class SqliteDataBase(DataBase):
                 raise ValueError()
 
 
-    def insert(self, repairment: dict):
+    def insert(self, repairment: dict) -> int:
         with sqlite3.connect(DB_FILE) as conn:
             conn.row_factory = sqlite3.Row
 
-            conn.cursor().execute(
+            cursor = conn.cursor()
+            cursor.execute(
                 """INSERT INTO repairments(
                     customer_name,
                     customer_phone,
@@ -134,7 +135,9 @@ class SqliteDataBase(DataBase):
                     repairment["estimated_cost"],
                     repairment["description"],
                 ]
-            ).fetchall()
+            )
+            
+            return cursor.lastrowid
 
 
     def update(self, id: int, repairment: dict):
@@ -165,10 +168,10 @@ class SqliteDataBase(DataBase):
                     repairment["description"],
                     id,
                 ]
-            ).fetchall()
+            )
 
 
     def delete(self, id: int):
         with sqlite3.connect(DB_FILE) as conn:
             conn.row_factory = sqlite3.Row
-            conn.cursor().execute("DELETE FROM repairments WHERE id = ?", [id]).fetchall()
+            conn.cursor().execute("DELETE FROM repairments WHERE id = ?", [id])

@@ -29,8 +29,7 @@ app = Flask(__name__)
 @app.route("/api/repairments", methods=["POST"])
 def post_repairment(service: RepairmentsService):
     try:
-        service.create_new_repairment(request.json)
-        return "", 201
+        return json.dumps(service.create_new_repairment(request.json)), 200
     except:
         logging.exception("Returning HTTP 500:")
         return "", 500

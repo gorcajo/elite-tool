@@ -6,11 +6,13 @@ function main() {
         request.setRequestHeader("Content-Type", "application/json");
 
         request.onload = function () {
-            if (request.status !== 201) {
+            if (request.status !== 200) {
                 throw "HTTP " + request.status + ": " + request.statusText;
             }
         
             alert("OK");
+            let repairmentId = JSON.parse(request.responseText).id
+            window.location = "/pages/edit#id=" + repairmentId;
         };
 
         if (document.getElementById("txt-customer-name").value === "") {

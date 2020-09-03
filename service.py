@@ -12,8 +12,11 @@ class RepairmentsService():
         self.db = db
 
 
-    def create_new_repairment(self, repairment: dict):
-        self.db.insert(repairment)
+    def create_new_repairment(self, repairment: dict) -> dict:
+        id = self.db.insert(repairment)
+        print(id)
+        repairment["id"] = id
+        return repairment
 
 
     def get_repairments(self, filters: List) -> List[dict]:
