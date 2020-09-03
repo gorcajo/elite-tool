@@ -3,6 +3,7 @@ from typing import List
 from injector import inject
 
 from repository import DataBase
+from pdf import RepairmentPdf
 
 
 class RepairmentsService():
@@ -41,14 +42,17 @@ class RepairmentsService():
         return self.db.find_by_id(id)
 
 
-    def get_repairment_pdf(self, id: int) -> dict:
+    def get_repairment_pdf(self, id: int):
         repairment = self.db.find_by_id(id)
 
         if repairment is None:
             return None
-        
-        # TODO
-        return f"PDF for repairment #{repairment['id']}: NOT IMPLEMENTED"
+
+        pdf = RepairmentPdf()
+        pdf.set_repairment(repairment)
+        pdf.build()
+
+        return pdf.output(dest="S").encode("latin-1")
 
 
     def modify_repairment(self, id: int, repairment: dict):

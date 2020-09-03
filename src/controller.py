@@ -4,6 +4,7 @@ import logging
 from flask import Flask
 from flask import redirect
 from flask import request
+from flask import make_response
 from flask import send_from_directory
 
 from flask_injector import FlaskInjector
@@ -87,10 +88,12 @@ def delete_repairment(service: RepairmentsService, id: int):
 @app.route("/files/repairment-<id>.pdf", methods=["GET"])
 def get_repairment_pdf(service: RepairmentsService, id: int):
     try:
-        result = service.get_repairment_pdf(id)
+        pdf = service.get_repairment_pdf(id)
 
-        if result is not None:
-            return json.dumps(result), 200
+        if pdf is not None:
+            response = make_response(pdf)
+            response.headers.set("Content-Type", "application/pdf")
+            return response
         else:
             return redirect("/pages/404", code=302)
     except:
