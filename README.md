@@ -14,7 +14,7 @@ cd elite-tool
 sudo ./run.sh
 ```
 
-And then you can browse to <http://localhost/pages/browse>
+And then you can browse to <http://localhost/pages/new>
 
 ## To Do List
 
@@ -30,3 +30,4 @@ And then you can browse to <http://localhost/pages/browse>
 - Cuando el usuario crea o edita una reparación, llevarle al PDF
 - En el navbar poner el logo
 - Guardar logs rotativos en disco
+- Bug: Quitar el link al pulsar en el título del navbar, o al menos que nos lleve al root de la web (hace cosas raras)
