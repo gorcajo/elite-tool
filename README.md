@@ -31,3 +31,4 @@ And then you can browse to <http://localhost/pages/new>
 - En el navbar poner el logo
 - Guardar logs rotativos en disco
 - Bug: Quitar el link al pulsar en el título del navbar, o al menos que nos lleve al root de la web (hace cosas raras)
+- CI/CD desde GitHub
