@@ -58,7 +58,7 @@ class SqliteDataBase(DataBase):
             rows = conn.cursor().execute(qry, []).fetchall()
 
             if len(rows) == 0:
-                return None
+                return []
             else:
                 repairments = []
 
