@@ -12,7 +12,7 @@ function main() {
         
             alert("OK");
             let repairmentId = JSON.parse(request.responseText).id
-            window.location = "/pages/edit#id=" + repairmentId;
+            window.location = "/files/repairment-" + repairmentId + ".pdf";
         };
 
         if (document.getElementById("txt-customer-name").value === "") {

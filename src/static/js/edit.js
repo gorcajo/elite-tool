@@ -19,7 +19,10 @@ function main() {
         document.getElementById("txt-manufacturer").value = repairment.manufacturer;
         document.getElementById("txt-model").value = repairment.model;
         document.getElementById("txt-sn").value = repairment.serial_number;
+        document.getElementById("txt-backup").value = repairment.backup;
+        document.getElementById("txt-password").value = repairment.password;
         document.getElementById("txt-reception-date").value = repairment.reception_date;
+        document.getElementById("txt-withdrawal-date").value = repairment.withdrawal_date;
         document.getElementById("txt-estimated-cost").value = repairment.estimated_cost;
         document.getElementById("txt-description").value = repairment.description;
     };
@@ -38,6 +41,8 @@ function main() {
             }
 
             alert("OK");
+            console.log(request)
+            window.location = "/files/repairment-" + id + ".pdf";
         };
 
         if (document.getElementById("txt-customer-name").value === "") {

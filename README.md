@@ -24,7 +24,6 @@ And then you can browse to <http://localhost/pages/new>
 - Darle una vuelta a los html, hay mucho código repetido entre ficheros (handlebars.js?)
 - Darle una vuelta a los js, hay código repetido en la validación
 - Añadir una página de configuración (para por ejemplo, la plantilla PDF)
-- Cuando el usuario crea o edita una reparación, llevarle al PDF
 - En el navbar poner el logo
 - Guardar logs rotativos en disco
 - CI/CD desde GitHub
