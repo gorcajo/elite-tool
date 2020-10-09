@@ -27,46 +27,52 @@ function updateTable() {
         let editButton = document.getElementById("btn-edit")
         let deleteButton = document.getElementById("btn-delete")
 
-        for (let i = 0; i < repairments.length; i++) {
-            let row = table.insertRow(i + 1);
-            
-            let j = 0;
-            row.insertCell(j++).innerHTML = repairments[i].id
-            row.insertCell(j++).innerHTML = repairments[i].serial_number
-            row.insertCell(j++).innerHTML = repairments[i].customer_phone
-            row.insertCell(j++).innerHTML = repairments[i].customer_name
-            
-            let buttonsCell = row.insertCell(j++);
+        if (repairments.length === 0) {
+            let cell = table.insertRow(1).insertCell(0);
+            cell.innerHTML = "(no hay reparaciones en la base de datos)";
+            cell.setAttribute("colSpan", "5");
+        } else {
+            for (let i = 0; i < repairments.length; i++) {
+                let row = table.insertRow(i + 1);
+                
+                let j = 0;
+                row.insertCell(j++).innerHTML = repairments[i].id
+                row.insertCell(j++).innerHTML = repairments[i].serial_number
+                row.insertCell(j++).innerHTML = repairments[i].customer_phone
+                row.insertCell(j++).innerHTML = repairments[i].customer_name
+                
+                let buttonsCell = row.insertCell(j++);
 
-            let newViewButton = viewButton.cloneNode(true);
-            newViewButton.removeAttribute('id');
-            newViewButton.addEventListener("click", function() {
-                window.location = "/files/repairment-" +  repairments[i].id + ".pdf"
-            });
-            buttonsCell.appendChild(newViewButton);
+                let newViewButton = viewButton.cloneNode(true);
+                newViewButton.removeAttribute('id');
+                newViewButton.addEventListener("click", function() {
+                    window.location = "/files/repairment-" +  repairments[i].id + ".pdf"
+                });
+                buttonsCell.appendChild(newViewButton);
 
-            let newEditButton = editButton.cloneNode(true);
-            newEditButton.removeAttribute('id');
-            newEditButton.addEventListener("click", function() {
-                window.location = "/pages/edit#id=" + repairments[i].id;
-            });
-            buttonsCell.appendChild(newEditButton);
+                let newEditButton = editButton.cloneNode(true);
+                newEditButton.removeAttribute('id');
+                newEditButton.addEventListener("click", function() {
+                    window.location = "/pages/edit#id=" + repairments[i].id;
+                });
+                buttonsCell.appendChild(newEditButton);
 
-            let newDeleteButton = deleteButton.cloneNode(true);
-            newDeleteButton.removeAttribute('id');
-            newDeleteButton.addEventListener("click", function() {
-                let response = confirm("Vas a borrar la reparación, ¿estás seguro?");
+                let newDeleteButton = deleteButton.cloneNode(true);
+                newDeleteButton.removeAttribute('id');
+                newDeleteButton.addEventListener("click", function() {
+                    let response = confirm("Vas a borrar la reparación, ¿estás seguro?");
 
-                if (response === true) {
-                    let request = new XMLHttpRequest();
-                    request.open("DELETE", "/api/repairments/" + repairments[i].id);
-                    request.onload = function () {
-                        location.reload();
+                    if (response === true) {
+                        let request = new XMLHttpRequest();
+                        request.open("DELETE", "/api/repairments/" + repairments[i].id);
+                        request.onload = function () {
+                            location.reload();
+                        }
+                        request.send();
                     }
-                    request.send();
-                }
-            });
-            buttonsCell.appendChild(newDeleteButton);
+                });
+                buttonsCell.appendChild(newDeleteButton);
+            }
         }
     };
 
