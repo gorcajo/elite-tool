@@ -18,12 +18,9 @@ And then you can browse to <http://localhost/pages/new>
 
 ## To Do List
 
-- Validación de campos en el front
-- Usar fechas como está mandao
 - Darle una vuelta a pdf.py, es una basura de código
 - Darle una vuelta a los html, hay mucho código repetido entre ficheros (handlebars.js?)
-- Darle una vuelta a los js, hay código repetido en la validación
+- Darle una vuelta a la validación en el front, hay código repetido y no se valida el tipo de datos
 - Añadir una página de configuración (para por ejemplo, la plantilla PDF)
-- En el navbar poner el logo
 - Guardar logs rotativos en disco
 - CI/CD desde GitHub
