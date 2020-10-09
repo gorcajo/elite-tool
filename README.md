@@ -22,9 +22,9 @@ And then you can browse to <http://localhost/pages/new>
 - Usar fechas como está mandao
 - Darle una vuelta a pdf.py, es una basura de código
 - Darle una vuelta a los html, hay mucho código repetido entre ficheros (handlebars.js?)
+- Darle una vuelta a los js, hay código repetido en la validación
 - Añadir una página de configuración (para por ejemplo, la plantilla PDF)
 - Cuando el usuario crea o edita una reparación, llevarle al PDF
 - En el navbar poner el logo
 - Guardar logs rotativos en disco
-- Bug: Quitar el link al pulsar en el título del navbar, o al menos que nos lleve al root de la web (hace cosas raras)
 - CI/CD desde GitHub
