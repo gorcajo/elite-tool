@@ -50,16 +50,16 @@ class RepairmentPdf(FPDF):
         self._add_cell("Modelo:", self.repairment["model"])
         estimated_cost = self.repairment["estimated_cost"]
         estimated_cost_str = str(estimated_cost)[:-2] + "." + str(estimated_cost)[-2:] + " EUR"
-        self._add_cell("Fecha de retirada:", "TO DO", newline=True)
+        self._add_cell("Fecha de retirada:", self.repairment["withdrawal_date"], newline=True)
 
         self._add_cell("Número de serie:", self.repairment["serial_number"], newline=True)
 
         self._add_cell("", "", newline=True)
 
-        self._add_cell("Copia de seguridad:", "TO DO")
+        self._add_cell("Copia de seguridad:", self.repairment["backup"])
         self._add_cell("Coste aproximado:", estimated_cost_str, newline=True)
 
-        self._add_cell("Contraseña:", "TO DO", newline=True)
+        self._add_cell("Contraseña:", self.repairment["password"], newline=True)
 
         self._add_cell("", "", newline=True)
 
@@ -80,6 +80,9 @@ class RepairmentPdf(FPDF):
 
 
     def _add_cell(self, key: str, value: str, newline=False):
+        if value is None:
+            value = ""
+
         margin_cell = 5
         cell_width = 45
         cell_height = 6
