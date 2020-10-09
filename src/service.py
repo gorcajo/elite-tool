@@ -14,6 +14,7 @@ class RepairmentsService():
 
 
     def create_new_repairment(self, repairment: dict) -> dict:
+        repairment["withdrawal_date"] = None
         id = self.db.insert(repairment)
         repairment["id"] = id
         return repairment

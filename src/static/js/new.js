@@ -27,6 +27,10 @@ function main() {
             alert("El campo 'Modelo' es obligatorio");
         } else if (document.getElementById("txt-sn").value === "") {
             alert("El campo 'Número de Serie' es obligatorio");
+        } else if (document.getElementById("txt-backup").value === "") {
+            alert("El campo 'Backup' es obligatorio");
+        } else if (document.getElementById("txt-password").value === "") {
+            alert("El campo 'Password' es obligatorio");
         } else if (document.getElementById("txt-reception-date").value === "") {
             alert("El campo 'Fecha de recepción' es obligatorio");
         } else if (document.getElementById("txt-estimated-cost").value === "") {
@@ -41,6 +45,8 @@ function main() {
                 "manufacturer": document.getElementById("txt-manufacturer").value,
                 "model": document.getElementById("txt-model").value,
                 "serial_number": document.getElementById("txt-sn").value,
+                "backup": document.getElementById("txt-backup").value,
+                "password": document.getElementById("txt-password").value,
                 "reception_date": document.getElementById("txt-reception-date").value,
                 "estimated_cost": document.getElementById("txt-estimated-cost").value,
                 "description": document.getElementById("txt-description").value,

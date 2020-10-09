@@ -18,10 +18,6 @@ And then you can browse to <http://localhost/pages/new>
 
 ## To Do List
 
-- Añadir campos a la entidad repairment:
-  - backup
-  - password
-  - withdrawal_date
 - Validación de campos en el front
 - Usar fechas como está mandao
 - Darle una vuelta a pdf.py, es una basura de código

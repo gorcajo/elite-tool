@@ -41,7 +41,10 @@ class SqliteDataBase(DataBase):
                     manufacturer TEXT,
                     model TEXT,
                     serial_number TEXT,
+                    backup TEXT,
+                    password TEXT,
                     reception_date TEXT,
+                    withdrawal_date TEXT,
                     estimated_cost INTEGER,
                     description TEXT
                 )"""])
@@ -68,7 +71,10 @@ class SqliteDataBase(DataBase):
                         "manufacturer": row["manufacturer"],
                         "model": row["model"],
                         "serial_number": row["serial_number"],
+                        "backup": row["backup"],
+                        "password": row["password"],
                         "reception_date": row["reception_date"],
+                        "withdrawal_date": row["withdrawal_date"],
                         "estimated_cost": row["estimated_cost"],
                         "description": row["description"],
                     })
@@ -97,7 +103,10 @@ class SqliteDataBase(DataBase):
                     "manufacturer": row["manufacturer"],
                     "model": row["model"],
                     "serial_number": row["serial_number"],
+                    "backup": row["backup"],
+                    "password": row["password"],
                     "reception_date": row["reception_date"],
+                    "withdrawal_date": row["withdrawal_date"],
                     "estimated_cost": row["estimated_cost"],
                     "description": row["description"],
                 }
@@ -107,6 +116,7 @@ class SqliteDataBase(DataBase):
 
 
     def insert(self, repairment: dict) -> int:
+        print("!!!!")
         with sqlite3.connect(DB_FILE) as conn:
             conn.row_factory = sqlite3.Row
 
@@ -119,10 +129,13 @@ class SqliteDataBase(DataBase):
                     manufacturer,
                     model,
                     serial_number,
+                    backup,
+                    password,
                     reception_date,
+                    withdrawal_date,
                     estimated_cost,
                     description)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 [
                     repairment["customer_name"],
                     repairment["customer_phone"],
@@ -130,7 +143,10 @@ class SqliteDataBase(DataBase):
                     repairment["manufacturer"],
                     repairment["model"],
                     repairment["serial_number"],
+                    repairment["backup"],
+                    repairment["password"],
                     repairment["reception_date"],
+                    repairment["withdrawal_date"],
                     repairment["estimated_cost"],
                     repairment["description"],
                 ]
@@ -151,7 +167,10 @@ class SqliteDataBase(DataBase):
                     manufacturer = ?,
                     model = ?,
                     serial_number = ?,
+                    backup = ?,
+                    password = ?,
                     reception_date = ?,
+                    withdrawal_date = ?,
                     estimated_cost = ?,
                     description = ?
                     WHERE id = ?""",
@@ -162,7 +181,10 @@ class SqliteDataBase(DataBase):
                     repairment["manufacturer"],
                     repairment["model"],
                     repairment["serial_number"],
+                    repairment["backup"],
+                    repairment["password"],
                     repairment["reception_date"],
+                    repairment["withdrawal_date"],
                     repairment["estimated_cost"],
                     repairment["description"],
                     id,
