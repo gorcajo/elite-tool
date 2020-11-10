@@ -117,23 +117,23 @@ def get_pages():
 def get_page(page: str):
     try:
         try:
-            return app.send_static_file(f"{page}.html"), 200
+            return app.send_static_file(page + ".html"), 200
         except NotFound:
-            return app.send_static_file(f"404.html"), 404
+            return app.send_static_file("404.html"), 404
     except:
         logging.exception("Returning HTTP 500:")
-        return app.send_static_file(f"500.html"), 500
+        return app.send_static_file("500.html"), 500
 
 
 @app.route("/pages/<folder>/<resource>", methods=["GET"])
 def get_static_resource(folder: str, resource: str):
     try:
         try:
-            return app.send_static_file(f"{folder}/{resource}"), 200
+            return app.send_static_file(folder + "/" + resource), 200
         except NotFound:
             return "", 404
     except:
         logging.exception("Returning HTTP 500:")
-        return app.send_static_file(f"500.html"), 500
+        return app.send_static_file("500.html"), 500
 
 FlaskInjector(app=app, modules=[configure])
