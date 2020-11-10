@@ -22,10 +22,10 @@ class RepairmentPdf(FPDF):
 
         self.set_font(family="Arial", style="B", size=20)
         self.cell(w=10, h=title_cell_height, txt="", ln=0, fill=True)
-        self.cell(w=100, h=title_cell_height, txt=f"{section_name}", ln=0, fill=True)
+        self.cell(w=100, h=title_cell_height, txt=section_name, ln=0, fill=True)
 
         self.set_font(family="Arial", style="I", size=15)
-        self.cell(w=0, h=title_cell_height, txt=f"#{self.repairment['id']} ", ln=1, align="R", fill=True)
+        self.cell(w=0, h=title_cell_height, txt="#" + str(self.repairment["id"]) + " ", ln=1, align="R", fill=True)
 
         self.ln(5)
 
@@ -73,7 +73,7 @@ class RepairmentPdf(FPDF):
         cell_height = 6
 
         self.set_font(family="Arial", style="B", size=12)
-        self.cell(w=cell_width, h=cell_height, txt=f" {key}", ln=0, fill=True)
+        self.cell(w=cell_width, h=cell_height, txt=" " + key, ln=0, fill=True)
         
         self.set_font(family="Arial", style="", size=12)
         self.cell(w=0, h=cell_height, txt=value, ln=1, fill=True)
