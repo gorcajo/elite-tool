@@ -6,6 +6,7 @@ from flask import redirect
 from flask import request
 from flask import make_response
 from flask import send_from_directory
+from flask_cors import CORS
 
 from flask_injector import FlaskInjector
 from injector import inject
@@ -22,6 +23,7 @@ logging.basicConfig(
     level=logging.INFO)
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 # ---------------- back-end ----------------
@@ -105,15 +107,15 @@ def get_repairment_pdf(service: RepairmentsService, id: int):
 
 @app.route("/", methods=["GET"])
 def get_root():
-    return redirect("/pages/browse", code=302)
+    return redirect("/react/index", code=302)
 
 
-@app.route("/pages", methods=["GET"])
+@app.route("/react", methods=["GET"])
 def get_pages():
-    return redirect("/pages/browse", code=302)
+    return redirect("/static/index", code=302)
 
 
-@app.route("/pages/<page>", methods=["GET"])
+@app.route("/react/<page>", methods=["GET"])
 def get_page(page: str):
     try:
         try:
@@ -125,11 +127,22 @@ def get_page(page: str):
         return app.send_static_file("500.html"), 500
 
 
-@app.route("/pages/<folder>/<resource>", methods=["GET"])
+@app.route("/static/<folder>/<resource>", methods=["GET"])
 def get_static_resource(folder: str, resource: str):
     try:
         try:
-            return app.send_static_file(folder + "/" + resource), 200
+            return app.send_static_file("static/" + folder + "/" + resource), 200
+        except NotFound:
+            return "", 404
+    except:
+        logging.exception("Returning HTTP 500:")
+        return app.send_static_file("500.html"), 500
+
+@app.route("/<file>.<extension>", methods=["GET"])
+def get_manifes(file: str, extension: str):
+    try:
+        try:
+            return app.send_static_file(file + "." + extension  ), 200
         except NotFound:
             return "", 404
     except:
