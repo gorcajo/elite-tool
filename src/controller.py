@@ -6,7 +6,6 @@ from flask import redirect
 from flask import request
 from flask import make_response
 from flask import send_from_directory
-from flask_cors import CORS
 
 from flask_injector import FlaskInjector
 from injector import inject
@@ -23,10 +22,15 @@ logging.basicConfig(
     level=logging.INFO)
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 # ---------------- back-end ----------------
+
+@app.after_request
+def filter(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 
 @inject
 @app.route("/api/repairments", methods=["POST"])
